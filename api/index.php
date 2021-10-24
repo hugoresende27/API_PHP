@@ -1,4 +1,7 @@
+
 <?php
+
+//para testar no browser http://localhost/API_PHP/api/index.php?option=status
 
 $data = [];
 
