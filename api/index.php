@@ -3,25 +3,33 @@
 
 //para testar no browser http://localhost/API_PHP/api/index.php?option=status
 
+//importar output.php
+require_once('output.php');
 
 //prepare response
 
-$data ['status']='ERROR';
-$data ['data']=null;
+$data ['status'] = 'ERROR';
+$data ['data'] = [];
 
 //request
+//API routes
 if (isset($_GET['option']))     //obrigatório var 'option' e 'status'
 {
     switch($_GET['option'])
     {
         case 'status':
-            define_response($data,'API running OK!!!!');
+            api_status($data);
+            //define_response($data,'API OK');
             // $data['status'] = 'SUCCESS';
             //$data['data']  = 'API running OK!';
             break;
 
         case 'random':
-            define_response($data,rand(0,1000));        //devolve valor aleatório entre 0 e 1000
+            api_random($data);
+            break;
+
+        case 'hash':
+            api_hash($data);
             break;
 
     }
@@ -31,23 +39,3 @@ if (isset($_GET['option']))     //obrigatório var 'option' e 'status'
 
 //emitir a resposta da API
 response($data);
-//========================================================================================
-// function success(&$data)
-// {
-//     $data['status'] = 'SUCCESS';
-// }
-
-function define_response(&$data,$value)
-{
-    $data['status']='SUCCESS';
-    $data['data'] = $value;
-}
-
-//========================================================================================
-//construção da response
-
-function response($data_response)
-{
-    header("Content-Type:application/json");  //resposta em formato json
-    echo json_encode($data_response);
-}

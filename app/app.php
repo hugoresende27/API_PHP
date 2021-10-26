@@ -8,24 +8,6 @@ define ('API_BASE','http://localhost/API_PHP/api/?option=');  //define ('nome'.'
 echo '<h3>APLICAÇÃO</h3><hr>';
 $resultado = api_request('status');
 $resultado = api_request('random');
-
-
-for ($i=0;$i<10;$i++)
-{
-    $resultado = api_request('random');
-    if ($resultado['status']=='ERROR')
-    {
-        die('Aconteceu um erro na minha chamada à API...');
-    }
-    echo "O valor randómico ".$resultado['data'].'<br>';
-}
-echo 'TERMINADO!';
-
-//echo $resultado;        //{"status":"SUCCESS","data":"API running OK!"} ou {"status":"ERROR"} se api_request falhar
-//=================================================================
-//VERIFY IF RESPONSE IS OK (SUCCESS)
-
-
 echo '<pre>';
 print_r($resultado);
 /*
@@ -35,6 +17,18 @@ Array
     [data] => API running OK!
 )
 */
+
+
+echo '<pre>';
+print_r(api_request('hash'));
+
+echo 'TERMINADO!';
+
+//echo $resultado;        //{"status":"SUCCESS","data":"API running OK!"} ou {"status":"ERROR"} se api_request falhar
+//=================================================================
+//VERIFY IF RESPONSE IS OK (SUCCESS)
+
+
 function api_request ($option)
 {
     //RECURSO AO CURL
