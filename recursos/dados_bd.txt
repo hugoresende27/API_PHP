@@ -1,3 +1,11 @@
 
 user : user_loja_api
 pass : fub1bImO2OD25o5IC66oHogezu8Oju
+
+base dados:
+1.buscar todos os clientes
+2.buscar todos os produtos
+3.buscar os produtos sem stock
+4.buscar produtos com stock
+5.buscar cliente por id_cliente
+6.buscar produto por id_produto
